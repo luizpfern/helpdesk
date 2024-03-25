@@ -1,0 +1,7 @@
+{
+  "name": "helpdesk",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
