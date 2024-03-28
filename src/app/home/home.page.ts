@@ -9,8 +9,12 @@ export class HomePage {
 
   constructor() {}
   
-  teste(){
-    console.log("sim")
+  login = {user:'', pass:''}
+
+
+  submitLogin(user:string, pass:string) {
+    console.log(user)
+    console.log(pass)
   }
 
 }

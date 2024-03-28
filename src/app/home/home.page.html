@@ -1,20 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Help Desk
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">HelpDesk</ion-title>
-    </ion-toolbar>
-  </ion-header>
+	<div class="container">
 
-  <div id="container">
-    <strong (click)="teste()">Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+		<!--<ion-img src="../../assets/logoexamplewhite.png" alt="logo de uma lampada"></ion-img>-->
+
+		<ion-row>
+			<ion-input label="Usuário" label-placement="floating" fill="outline" [(ngModel)]="login.user"></ion-input>
+		</ion-row>
+
+		<ion-row>
+			<ion-input label="Senha" label-placement="floating" fill="outline" [(ngModel)]="login.pass"></ion-input>
+		</ion-row>
+
+		<ion-row>
+			<ion-button [disabled]="!login.user || !login.pass" color="tertiary" class="loginBtn" (click)="submitLogin(login.user, login.pass)">Login</ion-button>
+		</ion-row>
+  	</div>
 </ion-content>
