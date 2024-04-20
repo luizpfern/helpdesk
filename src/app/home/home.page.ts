@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { createPool } from '@vercel/postgres';
 
 const pool = createPool({
-  connectionString: '',
+  connectionString: 'postgres://default:FBpO6LCj0MRx@ep-morning-voice-a4n5t2o0-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require',
 });
 
 
