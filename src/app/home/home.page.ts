@@ -12,6 +12,8 @@ export class HomePage {
   constructor(private router:Router, public servidor:ServidorService) {}
   
   login = {user:'', pass:''}
+  register = {user: '', pass: '', passConfirm:''}
+  isLogin = true;
 
 
   async submitLogin(user:string, pass:string) {
@@ -22,8 +24,20 @@ export class HomePage {
     } else {
       console.log('falha')
     }
+  }
 
-    console.log('this.servidor.usuario:', this.servidor.usuario)
+  async submitRegister(user: string, pass: string, passConfirm: string) {
+    if (pass !== passConfirm) {
+      this.servidor.toastGenerico('As senhas de diferem!')
+    } else {
+      
+    }
+  }
+
+  alteraLogin(){
+    this.isLogin = this.isLogin ? false : true;
+
+    console.log(this.isLogin)
   }
 
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { createPool } from '@vercel/postgres';
+import { ToastController } from '@ionic/angular';
 
 const pool = createPool({
   connectionString: 'postgres://default:FBpO6LCj0MRx@ep-morning-voice-a4n5t2o0-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require',
@@ -12,7 +13,7 @@ export class ServidorService {
 
   usuario:any;
 
-  constructor() { }
+  constructor(public toast: ToastController) { }
 
   async efetueLogin(user:string,pass:string) {
     const response = await pool.sql`SELECT * FROM USUARIOS WHERE LOGIN=${user} and SENHA=${pass}`;
@@ -23,5 +24,16 @@ export class ServidorService {
         this.usuario = response.rows[0];
         return true;
     }
-}
+  }
+
+  async toastGenerico(texto:string) {
+    const toast = await this.toast.create({
+      message: texto,
+      duration: 5000,
+      position: 'top',
+    });
+
+    await toast.present();
+  }
+
 }

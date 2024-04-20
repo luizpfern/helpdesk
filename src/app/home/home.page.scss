@@ -4,7 +4,7 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  background-color: #111111;
+  background-color: #171717;
 }
 
 .container {
@@ -19,7 +19,7 @@
 .container-leftside {
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
-  padding: 20px;
+  padding: 20px 40px;
   background-color: white;
   height: 100%;
   width: 40%;
@@ -28,8 +28,11 @@
 .container-rightside {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: aquamarine;
+  background-color: rgb(41, 17, 86);
   width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container ion-img {
@@ -44,7 +47,7 @@
 
 .container h1 {
   text-align: center;
-  color: white;
+  color:black;
   font-size: 60px;
 }
 
@@ -53,4 +56,18 @@
   height: 50px;
   border: solid 1px white;
   border-radius: 2px;
+}
+
+.registerLabel {
+  color: #0230ff;
+  cursor: pointer;
+}
+
+.logologin {
+  scale: 2.5;
+}
+
+.lampText {
+  text-align: center;
+  color: white;
 }
