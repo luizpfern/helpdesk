@@ -1,18 +1,28 @@
 <ion-content [fullscreen]="true">
-	<div class="container">
+	<div class="content-all">
+		<div class="container">
 
-		<!--<ion-img src="../../assets/logoexamplewhite.png" alt="logo de uma lampada"></ion-img>-->
+			<!--<ion-img src="../../assets/logoexamplewhite.png" alt="logo de uma lampada"></ion-img>-->
 
-		<ion-row>
-			<ion-input label="Usuário" label-placement="floating" fill="outline" [(ngModel)]="login.user" type="text"></ion-input>
-		</ion-row>
+			<div class="container-leftside">
+				<h1>Help Desk</h1>
 
-		<ion-row>
-			<ion-input label="Senha" label-placement="floating" fill="outline" [(ngModel)]="login.pass" type="password" [clearInput]="true"></ion-input>
-		</ion-row>
+				<ion-row>
+					<ion-input label="Usuário" label-placement="floating" fill="outline" [(ngModel)]="login.user" type="text"></ion-input>
+				</ion-row>
+	
+				<ion-row>
+					<ion-input label="Senha" label-placement="floating" fill="outline" [(ngModel)]="login.pass" type="password" [clearInput]="true"></ion-input>
+				</ion-row>
+	
+				<ion-row>
+					<ion-button [disabled]="!login.user || !login.pass" color="tertiary" class="loginBtn" (click)="submitLogin(login.user, login.pass)">Login</ion-button>
+				</ion-row>
+			</div>
 
-		<ion-row>
-			<ion-button [disabled]="!login.user || !login.pass" color="tertiary" class="loginBtn" (click)="submitLogin(login.user, login.pass)">Login</ion-button>
-		</ion-row>
-  	</div>
+			<div class="container-rightside">
+
+			</div>
+		</div>
+	</div>
 </ion-content>

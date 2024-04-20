@@ -1,11 +1,35 @@
+.content-all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #111111;
+}
+
 .container {
-  margin: 50px auto;
-  background-color: #130e2b;
-  height: 620px;
-  width: 420px;
+  height: 80%;
+  width: 70%;
   border-radius: 15px;
   padding: 20px;
-  align-content: center;
+  display: flex;
+  padding: 0;
+}
+
+.container-leftside {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding: 20px;
+  background-color: white;
+  height: 100%;
+  width: 40%;
+}
+
+.container-rightside {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: aquamarine;
+  width: 60%;
 }
 
 .container ion-img {
@@ -16,6 +40,12 @@
 
 .container ion-row {
   margin-top: 8px;
+}
+
+.container h1 {
+  text-align: center;
+  color: white;
+  font-size: 60px;
 }
 
 .loginBtn {
