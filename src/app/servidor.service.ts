@@ -18,6 +18,7 @@ export class ServidorService {
   async efetueLogin(user:string,pass:string) {
     const loading = await this.loadingGenerico('Efetuando Login');
     const response = await pool.sql`SELECT * FROM USUARIOS WHERE LOGIN=${user} and SENHA=${pass}`;
+    await sleep(1000)
     loading.dismiss();
     
     console.log(response.rows);
@@ -55,4 +56,8 @@ export class ServidorService {
     return loading
   }
 
+}
+
+function sleep(ms:number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }

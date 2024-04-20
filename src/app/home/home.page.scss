@@ -37,6 +37,7 @@
 
 .container ion-img {
   margin: 0 auto;
+  scale: 2.5;
   height: 90px;
   width: 60px
 }
@@ -61,10 +62,6 @@
 .registerLabel {
   color: #0230ff;
   cursor: pointer;
-}
-
-.logologin {
-  scale: 2.5;
 }
 
 .lampText {

@@ -35,3 +35,9 @@
 * {
     font-family: 'Rubik';
 }
+
+ion-input.custom.ios,
+ion-input.custom.md {
+  color: var(--ion-color-tertiary);
+  border-color: var(--ion-color-tertiary);
+}
