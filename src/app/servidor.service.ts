@@ -18,7 +18,6 @@ export class ServidorService {
   async efetueLogin(user:string,pass:string) {
     const loading = await this.loadingGenerico('Efetuando Login');
     const response = await pool.sql`SELECT * FROM USUARIOS WHERE LOGIN=${user} and SENHA=${pass}`;
-    await sleep(1000)
     loading.dismiss();
     
     console.log(response.rows);
@@ -32,6 +31,13 @@ export class ServidorService {
   
   async efetueRegistroUsuario(user:string, pass:string) {
     await pool.sql`INSERT INTO USUARIOS (login,senha,tipo_acesso) values (${user},${pass},0)`
+  }
+
+  async getPatrimonios(id?:number) {
+    const loading = await this.loadingGenerico('Carregando Patrimônios');
+    let result = id ? (await pool.sql`SELECT * FROM PATRIMONIOS WHERE id=${id}`).rows[0] : (await pool.sql`SELECT * FROM PATRIMONIOS`).rows;
+    loading.dismiss();
+    return result
   }
 
   async toastGenerico(texto:string) {
@@ -56,8 +62,4 @@ export class ServidorService {
     return loading
   }
 
-}
-
-function sleep(ms:number) {
-  return new Promise(resolve => setTimeout(resolve, ms));
 }

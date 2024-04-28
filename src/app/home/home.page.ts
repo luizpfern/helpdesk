@@ -20,14 +20,12 @@ export class HomePage {
     console.log(user)
     console.log(pass)
     if (await this.servidor.efetueLogin(user,pass) == true) {
-      
-      if (this.servidor.usuario.tipo_acesso == 0) {
-        this.router.navigateByUrl('/principal')
-      }
+      this.router.navigateByUrl('/principal')
       
     } else {
       this.servidor.toastGenerico('Usuário ou senha Inválido');
     }
+    this.limpaInputs();
   }
 
   async submitRegister(user: string, pass: string, passConfirm: string) {
@@ -35,15 +33,19 @@ export class HomePage {
       this.servidor.toastGenerico('As senhas de diferem!')
     } else {
       await this.servidor.efetueRegistroUsuario(user,pass);
-      this.register.pass='',this.register.passConfirm='',this.register.user;
+      this.limpaInputs();
       this.servidor.toastGenerico('Conta Registrada!')
     }
   }
 
   alteraLogin(){
+    this.limpaInputs();
     this.isLogin = this.isLogin ? false : true;
+  }
 
-    console.log(this.isLogin)
+  limpaInputs() {
+    this.login = {user:'', pass:''};
+    this.register = {user: '', pass: '', passConfirm:''};
   }
 
 }

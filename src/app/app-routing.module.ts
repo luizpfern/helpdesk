@@ -16,7 +16,18 @@ const routes: Routes = [
     path: 'principal',canActivate:[AuthGuard],
     loadChildren: () => import('./principal/principal.module').then( m => m.PrincipalPageModule)
   },
-
+  {
+    path: 'lista-patrimonios',canActivate: [AuthGuard],
+    loadChildren: () => import('./lista-patrimonios/lista-patrimonios.module').then( m => m.ListaPatrimoniosPageModule)
+  },
+  {
+    path: 'patrimonios',canActivate: [AuthGuard],
+    loadChildren: () => import('./patrimonios/patrimonios.module').then( m => m.PatrimoniosPageModule)
+  },
+  {
+    path: 'patrimonios/:id',canActivate: [AuthGuard],
+    loadChildren: () => import('./patrimonios/patrimonios.module').then( m => m.PatrimoniosPageModule)
+  },
 ];
 
 @NgModule({

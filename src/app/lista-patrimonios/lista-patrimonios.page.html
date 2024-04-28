@@ -1,0 +1,37 @@
+<ion-header class="custom">
+  <ion-toolbar>
+    <ion-title>Lista de Patrimônios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="main-container">
+    
+    <div class="first-row">
+      <h1>Patrimônios</h1>
+      <ion-button color="tertiary" (click)="openItem(0)">Adicionar Patrimônio</ion-button>
+    </div>
+
+    <ion-searchbar placeholder="Buscar" clear-icon="close" mode="ios" class="ion-no-padding"></ion-searchbar>
+
+    <ion-grid>
+      <ion-row class="header">
+        <ion-col>ID</ion-col>
+        <ion-col>Descrição</ion-col>
+        <ion-col>Quantidade</ion-col>
+        <ion-col>Data Criação</ion-col>
+      </ion-row>
+
+      <ion-row class="item" *ngFor="let p of patrimonios" (click)="openItem(p.id)">
+        <ion-col>{{p.id}}</ion-col>
+        <ion-col>{{p.descricao}}</ion-col>
+        <ion-col>{{p.quantidade}}</ion-col>
+        <ion-col>{{p.data_criacao.toLocaleDateString()}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+
+</ion-content>

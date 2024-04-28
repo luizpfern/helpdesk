@@ -1,0 +1,24 @@
+.main-container {
+    padding: 0 60px;
+}
+
+.first-row {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.header {
+    font-weight: bold;
+    border-bottom: solid #dcdcdc 1px;
+}
+
+.item {
+    padding: 8px 0;
+    border-bottom: solid #dcdcdc 1px;
+}
+
+.item:hover {
+    cursor: pointer;
+    background-color: #dcdcdc;
+}

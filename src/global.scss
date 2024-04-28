@@ -41,3 +41,8 @@ ion-input.custom.md {
   color: var(--ion-color-tertiary);
   border-color: var(--ion-color-tertiary);
 }
+
+ion-header.custom {
+  box-shadow: none;
+  border-bottom: solid 1px #cdcdcd;
+}
