@@ -13,9 +13,12 @@ export class ListaPatrimoniosPage implements OnInit {
 
   constructor(public servidor: ServidorService, private router: Router) { }
 
-  async ngOnInit() {
+  async ionViewWillEnter(){
     this.patrimonios = await this.servidor.getPatrimonios();
-    console.log('this.patrimonios:', this.patrimonios)
+  }
+
+  async ngOnInit() {
+
   }
 
   openItem(id:number) {
@@ -32,5 +35,12 @@ export class ListaPatrimoniosPage implements OnInit {
     searchText = "s",
     result = data.filter(o => 
         keys.some(k => o['email'].toString().toLowerCase().indexOf(searchText) !== -1));
+  }
+
+  async delete(id:number) {
+    const a = await this.servidor.confirmaGenerico('Deseja exluir Patriônio?');
+    console.log('a:', a)
+
+    console.log(id)
   }
 }

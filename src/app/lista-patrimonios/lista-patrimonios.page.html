@@ -26,6 +26,7 @@
         <ion-col>Descrição</ion-col>
         <ion-col>Quantidade</ion-col>
         <ion-col>Data Criação</ion-col>
+        <ion-col>Excluir</ion-col>
       </ion-row>
 
       <ion-row class="item" *ngFor="let p of patrimonios" (click)="openItem(p.id)">
@@ -33,6 +34,11 @@
         <ion-col>{{p.descricao}}</ion-col>
         <ion-col>{{p.quantidade}}</ion-col>
         <ion-col>{{p.data_criacao.toLocaleDateString()}}</ion-col>
+        <ion-col>
+          <ion-button fill="clear" (click)="delete(p.id)">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </div>

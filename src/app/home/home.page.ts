@@ -17,8 +17,6 @@ export class HomePage {
 
 
   async submitLogin(user:string, pass:string) {
-    console.log(user)
-    console.log(pass)
     if (await this.servidor.efetueLogin(user,pass) == true) {
       this.router.navigateByUrl('/principal')
       

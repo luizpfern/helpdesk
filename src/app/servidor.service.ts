@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { createPool } from '@vercel/postgres';
+import { Pool, createPool } from '@vercel/postgres';
 import { ToastController, LoadingController } from '@ionic/angular';
+import { alertController } from '@ionic/core';
 
 const pool = createPool({
   connectionString: 'postgres://default:FBpO6LCj0MRx@ep-morning-voice-a4n5t2o0-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require',
@@ -20,7 +21,6 @@ export class ServidorService {
     const response = await pool.sql`SELECT * FROM USUARIOS WHERE LOGIN=${user} and SENHA=${pass}`;
     loading.dismiss();
     
-    console.log(response.rows);
     if (response.rows.length == 0) {
         return false;
     } else {
@@ -38,6 +38,14 @@ export class ServidorService {
     let result = id ? (await pool.sql`SELECT * FROM PATRIMONIOS WHERE id=${id}`).rows[0] : (await pool.sql`SELECT * FROM PATRIMONIOS`).rows;
     loading.dismiss();
     return result
+  }
+
+  async registraPatrimonio(data:{descricao:string,quantidade:number},id?:number) {
+    if (id) {
+      await pool.sql`UPDATE PATRIMONIOS SET descricao=${data.descricao}, quantidade=${data.quantidade} WHERE id=${id}`;
+    } else {
+      await pool.sql`INSERT INTO PATRIMONIOS (quantidade,descricao) values (${data.quantidade},${data.descricao})`;
+    }
   }
 
   async toastGenerico(texto:string) {
@@ -60,6 +68,27 @@ export class ServidorService {
 
     loading.present();
     return loading
+  }
+
+  async confirmaGenerico(texto:string) {
+    const alert = await alertController.create({
+      header:'Deseja Excluir Patrimônio?',
+      mode: 'ios',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Sim',
+          role: 'confirm',
+        },
+      ]
+    })
+
+    alert.present()
+
+    return (await alert.onDidDismiss()).role
   }
 
 }

@@ -5,8 +5,23 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-input label="Descrição" label-placement="floating" fill="outline" [(ngModel)]="patrimonio.descricao" type="text"></ion-input>
-  <ion-input label="Quantidade" label-placement="floating" fill="outline" [(ngModel)]="patrimonio.quantidade" type="text"></ion-input>
-  <ion-button color="dark">Fechar</ion-button>
-  <ion-button color="tertiary">Salvar</ion-button>
+
+  <h2>Cadastro de Patrimônio</h2>
+
+  <form (ngSubmit)="onSubmit(patrimonio)">
+
+    <ion-list>
+      <ion-item>
+        <ion-input label="Descrição" labelPlacement="stacked" placeholder="Digite a Descrição" [(ngModel)]="patrimonio.descricao" name="descricao" required="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Quantidade" labelPlacement="stacked" placeholder="Digite a quantidade" [(ngModel)]="patrimonio.quantidade" name="quantidade" required="true"></ion-input>
+      </ion-item>
+    </ion-list>
+  
+    <ion-button color="tertiary" type="submit" [disabled]="!patrimonio.descricao && !patrimonio.quantidade">Salvar</ion-button>
+    <ion-button color="dark" (click)="close()">Fechar</ion-button>
+
+  </form>
 </ion-content>
