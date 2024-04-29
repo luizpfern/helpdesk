@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class ListaPatrimoniosPage implements OnInit {
 
   public patrimonios:any = [];
+  public patrimoniosFiltro: any = [];
+  public busca: string = ''
 
   constructor(public servidor: ServidorService, private router: Router) { }
 
@@ -30,17 +32,15 @@ export class ListaPatrimoniosPage implements OnInit {
   }
 
   async filtro() {
-    let data = [{ "id": 1, "first_name": "Jean", "last_name": "Owens", "email": "jowens0@google.ru", "gender": "Female" }, { "id": 2, "first_name": "Marie", "last_name": "Morris", "email": "mmorris1@engadget.com", "gender": "Female" }, { "id": 3, "first_name": "Larry", "last_name": "Wallace", "email": "lwallace2@example.com", "gender": "Male" }],
-    keys = Object.keys(data[0]),
-    searchText = "s",
-    result = data.filter(o => 
-        keys.some(k => o['email'].toString().toLowerCase().indexOf(searchText) !== -1));
+
   }
 
-  async delete(id:number) {
-    const a = await this.servidor.confirmaGenerico('Deseja exluir Patriônio?');
-    console.log('a:', a)
+  async delete(patrimonio:any) {
+    if ((await this.servidor.confirmaGenerico(`Deseja excluir ${patrimonio.descricao}`)) == 'confirm') {
+      await this.servidor.deletaPatrimonio(patrimonio.id);
+      this.patrimonios = await this.servidor.getPatrimonios();
+    }
 
-    console.log(id)
+
   }
 }

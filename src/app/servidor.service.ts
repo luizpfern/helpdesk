@@ -41,11 +41,15 @@ export class ServidorService {
   }
 
   async registraPatrimonio(data:{descricao:string,quantidade:number},id?:number) {
-    if (id) {
+    if (id != 0) {
       await pool.sql`UPDATE PATRIMONIOS SET descricao=${data.descricao}, quantidade=${data.quantidade} WHERE id=${id}`;
     } else {
       await pool.sql`INSERT INTO PATRIMONIOS (quantidade,descricao) values (${data.quantidade},${data.descricao})`;
     }
+  }
+
+  async deletaPatrimonio(id:number) {
+    await pool.sql`DELETE FROM PATRIMONIOS WHERE id=${id}`;
   }
 
   async toastGenerico(texto:string) {
@@ -72,7 +76,7 @@ export class ServidorService {
 
   async confirmaGenerico(texto:string) {
     const alert = await alertController.create({
-      header:'Deseja Excluir Patrimônio?',
+      header:texto,
       mode: 'ios',
       buttons: [
         {
