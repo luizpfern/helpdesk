@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServidorService } from '../servidor.service';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +10,15 @@ import { ServidorService } from '../servidor.service';
 })
 export class HomePage {
 
-  constructor(private router:Router, public servidor:ServidorService) {}
+  constructor(private router:Router, public servidor:ServidorService,public platform:Platform) {}
   
   login = {user:'', pass:''}
   register = {user: '', pass: '', passConfirm:''}
   isLogin = true;
 
+  ionViewWillEnter(){
+    this.servidor.isMobile = this.platform.is('mobile');
+  }
 
   async submitLogin(user:string, pass:string) {
     if (await this.servidor.efetueLogin(user,pass) == true) {

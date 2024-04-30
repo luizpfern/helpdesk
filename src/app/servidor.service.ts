@@ -13,6 +13,7 @@ const pool = createPool({
 export class ServidorService {
 
   usuario:any;
+  isMobile:any;
 
   constructor(public toast: ToastController, public loading: LoadingController) { }
 

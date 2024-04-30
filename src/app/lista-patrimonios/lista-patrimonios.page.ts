@@ -10,13 +10,14 @@ import { Router } from '@angular/router';
 export class ListaPatrimoniosPage implements OnInit {
 
   public patrimonios:any = [];
-  public patrimoniosFiltro: any = [];
+  public patrimoniosOrigem: any = [];
   public busca: string = ''
 
   constructor(public servidor: ServidorService, private router: Router) { }
 
   async ionViewWillEnter(){
-    this.patrimonios = await this.servidor.getPatrimonios();
+    this.patrimoniosOrigem = await this.servidor.getPatrimonios();
+    this.patrimonios = this.patrimoniosOrigem
   }
 
   async ngOnInit() {
@@ -32,7 +33,16 @@ export class ListaPatrimoniosPage implements OnInit {
   }
 
   async filtro() {
-
+    let searchtext = this.busca;
+    if (this.busca == '') {
+      this.patrimonios = this.patrimoniosOrigem;
+    } else {
+      this.patrimonios = this.patrimoniosOrigem.filter(function(o:any) {
+        return Object.keys(o).some(function(k) {
+          return o[k].toString().toLowerCase().indexOf(searchtext.toLowerCase()) != -1;
+        })
+      })
+    }
   }
 
   async delete(patrimonio:any) {

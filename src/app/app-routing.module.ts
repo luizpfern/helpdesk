@@ -27,7 +27,15 @@ const routes: Routes = [
   {
     path: 'patrimonios/:id',canActivate: [AuthGuard],
     loadChildren: () => import('./patrimonios/patrimonios.module').then( m => m.PatrimoniosPageModule)
+  },  {
+    path: 'lista-usuarios',
+    loadChildren: () => import('./lista-usuarios/lista-usuarios.module').then( m => m.ListaUsuariosPageModule)
   },
+  {
+    path: 'usuarios',
+    loadChildren: () => import('./usuarios/usuarios.module').then( m => m.UsuariosPageModule)
+  },
+
 ];
 
 @NgModule({

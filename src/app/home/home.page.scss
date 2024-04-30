@@ -35,7 +35,7 @@
   align-items: center;
 }
 
-.container ion-img {
+.container .img {
   margin: 0 auto;
   scale: 2.5;
   height: 90px;
@@ -67,4 +67,41 @@
 .lampText {
   text-align: center;
   color: white;
+}
+
+
+
+
+// Classes para mobile
+.content-all-mob {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #171717;
+  flex-direction: column;
+
+  h1 {
+    text-align: center;
+    font-size: 60px;
+  }
+}
+
+.imgmob {
+  width: 30%;
+  height: 30%;
+}
+
+.middlemob {
+  background-color: rgba(41, 17, 86, 0.479);
+  justify-self: center;
+  
+  width: 95%;
+  border-radius: 15px;
+  padding-bottom: 4%;
+}
+
+.loginBtnmob {
+  width: 100%;
+  height: 50px;
 }

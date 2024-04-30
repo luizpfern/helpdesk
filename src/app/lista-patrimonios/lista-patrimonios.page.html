@@ -15,10 +15,13 @@
     
     <div class="first-row">
       <h1>Patrimônios</h1>
-      <ion-button color="tertiary" (click)="openItem(0)">Adicionar Patrimônio</ion-button>
+      <ion-button mode="ios" color="tertiary" (click)="openItem(0)">
+        Adicionar Patrimônio
+        <ion-icon slot="end" name="bag-add"></ion-icon>
+      </ion-button>
     </div>
 
-    <ion-searchbar placeholder="Buscar" clear-icon="close" mode="ios" class="ion-no-padding"></ion-searchbar>
+    <ion-searchbar placeholder="Buscar" clear-icon="close" mode="ios" class="ion-no-padding" (keydown)="filtro()" [(ngModel)]="busca"></ion-searchbar>
 
     <ion-grid>
       <ion-row class="header">
