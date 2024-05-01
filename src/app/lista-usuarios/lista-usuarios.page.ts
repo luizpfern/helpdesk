@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-usuarios',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaUsuariosPage implements OnInit {
 
-  constructor() { }
+  usuarios:any [] = [];
+
+  constructor(public router:Router) { }
 
   ngOnInit() {
   }
 
+  navigateBack() {
+    this.router.navigateByUrl('/principal')
+  }
 }

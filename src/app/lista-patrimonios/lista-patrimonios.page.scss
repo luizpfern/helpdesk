@@ -1,25 +1,26 @@
+
 .main-container {
     padding: 0 4%;
-}
-
-.first-row {
+  }
+  
+  .first-row {
     display: flex;
     justify-content: space-between;
-
-}
-
-.header {
+  
+  }
+  
+  .header {
     font-weight: bold;
     border-bottom: solid #dcdcdc 1px;
-}
-
-.item {
+  }
+  
+  .item {
     padding: 8px 0;
     border-bottom: solid #dcdcdc 1px;
     align-items: center;
-}
-
-.item:hover {
+  }
+  
+  .item:hover {
     cursor: pointer;
     background-color: #eeeeee;
-}
+  }

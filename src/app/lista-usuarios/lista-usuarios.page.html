@@ -1,13 +1,47 @@
-<ion-header [translucent]="true">
+<ion-header class="custom">
   <ion-toolbar>
-    <ion-title>lista-usuarios</ion-title>
+    <ion-buttons slot="start" (click)="navigateBack()">
+      <ion-button>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Lista de Usuários</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">lista-usuarios</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <div class="main-container">
+    
+    <div class="first-row">
+      <h1>Usuários</h1>
+      <ion-button mode="ios" color="tertiary">
+        Adicionar Usuário
+        <ion-icon slot="end" name="person-add"></ion-icon>
+      </ion-button>
+    </div>
+
+    <ion-searchbar placeholder="Buscar" clear-icon="close" mode="ios" class="ion-no-padding"></ion-searchbar>
+
+    <ion-grid>
+      <ion-row class="header">
+        <ion-col>ID</ion-col>
+        <ion-col>Nome</ion-col>
+        <ion-col>Tipo Acesso</ion-col>
+        <ion-col>Data Cadastro</ion-col>
+        <ion-col>Excluir</ion-col>
+      </ion-row>
+
+      <ion-row class="item" *ngFor="let p of usuarios">
+        <ion-col>{{p.id}}</ion-col>
+        <ion-col>{{p.nome}}</ion-col>
+        <ion-col>{{p.tipo_acesso}}</ion-col>
+        <ion-col>{{p.data_cadastro.toLocaleDateString()}}</ion-col>
+        <ion-col>
+          <ion-button fill="clear" size="small">
+            <ion-icon slot="icon-only" color="dark" name="trash"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
