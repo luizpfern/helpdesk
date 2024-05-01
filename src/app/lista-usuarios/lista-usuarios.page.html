@@ -1,15 +1,16 @@
 <ion-header class="custom">
   <ion-toolbar>
-    <ion-buttons slot="start" (click)="navigateBack()">
+    <ion-buttons slot="start">
       <ion-button>
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Lista de Usuários</ion-title>
+    <ion-title>Lista de Patrimônios</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+
   <div class="main-container">
     
     <div class="first-row">
@@ -26,22 +27,11 @@
       <ion-row class="header">
         <ion-col>ID</ion-col>
         <ion-col>Nome</ion-col>
-        <ion-col>Tipo Acesso</ion-col>
-        <ion-col>Data Cadastro</ion-col>
-        <ion-col>Excluir</ion-col>
-      </ion-row>
-
-      <ion-row class="item" *ngFor="let p of usuarios">
-        <ion-col>{{p.id}}</ion-col>
-        <ion-col>{{p.nome}}</ion-col>
-        <ion-col>{{p.tipo_acesso}}</ion-col>
-        <ion-col>{{p.data_cadastro.toLocaleDateString()}}</ion-col>
-        <ion-col>
-          <ion-button fill="clear" size="small">
-            <ion-icon slot="icon-only" color="dark" name="trash"></ion-icon>
-          </ion-button>
-        </ion-col>
+        <ion-col>Usuário</ion-col>
       </ion-row>
     </ion-grid>
   </div>
+
+
+
 </ion-content>
