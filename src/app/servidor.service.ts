@@ -30,8 +30,8 @@ export class ServidorService {
     }
   }
   
-  async efetueRegistroUsuario(user:string, pass:string) {
-    await pool.sql`INSERT INTO USUARIOS (login,senha,tipo_acesso) values (${user},${pass},0)`
+  async efetueRegistroUsuario(user:string, pass:string, name:string) {
+    await pool.sql`INSERT INTO USUARIOS (login,senha,tipo_acesso,nome) values (${user},${pass},0,${name})`
   }
 
   async getPatrimonios(id?:number) {
@@ -51,6 +51,25 @@ export class ServidorService {
 
   async deletaPatrimonio(id:number) {
     await pool.sql`DELETE FROM PATRIMONIOS WHERE id=${id}`;
+  }
+
+  async getUsuarios(id?:number) {
+    const loading = await this.loadingGenerico('Carregando Usuários');
+    let result = id ? (await pool.sql`SELECT * FROM USUARIOS WHERE id=${id}`).rows[0] : (await pool.sql`SELECT * FROM USUARIOS`).rows;
+    loading.dismiss();
+    return result
+  }
+
+  async registraUsuario(data:{user:string, pass:string, name:string, type:number},id?:number) {
+    if (id != 0) {
+      await pool.sql`UPDATE USUARIOS SET nome=${data.name}, login=${data.user}, senha=${data.pass}, tipo_acesso=${data.type} WHERE id=${id}`;
+    } else {
+      await pool.sql`INSERT INTO USUARIOS (nome,login,senha,tipo_acesso) values (${data.name},${data.user},${data.pass},${data.type})`;
+    }
+  }
+
+  async deletaUsuario(id:number) {
+    await pool.sql`DELETE FROM USUARIOS WHERE id=${id}`;
   }
 
   async toastGenerico(texto:string) {

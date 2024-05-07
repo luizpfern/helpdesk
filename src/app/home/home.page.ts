@@ -13,7 +13,7 @@ export class HomePage {
   constructor(private router:Router, public servidor:ServidorService,public platform:Platform) {}
   
   login = {user:'', pass:''}
-  register = {user: '', pass: '', passConfirm:''}
+  register = {user: '', pass: '', passConfirm:'', name:''}
   isLogin = true;
 
   ionViewWillEnter(){
@@ -30,11 +30,11 @@ export class HomePage {
     this.limpaInputs();
   }
 
-  async submitRegister(user: string, pass: string, passConfirm: string) {
+  async submitRegister(user: string, pass: string, passConfirm: string, name:string) {
     if (pass !== passConfirm) {
       this.servidor.toastGenerico('As senhas de diferem!')
     } else {
-      await this.servidor.efetueRegistroUsuario(user,pass);
+      await this.servidor.efetueRegistroUsuario(user,pass,name);
       this.limpaInputs();
       this.servidor.toastGenerico('Conta Registrada!')
     }
@@ -47,7 +47,7 @@ export class HomePage {
 
   limpaInputs() {
     this.login = {user:'', pass:''};
-    this.register = {user: '', pass: '', passConfirm:''};
+    this.register = {user: '', pass: '', passConfirm:'', name:''};
   }
 
 }

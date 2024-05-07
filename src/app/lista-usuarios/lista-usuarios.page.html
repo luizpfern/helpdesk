@@ -15,7 +15,7 @@
     
     <div class="first-row">
       <h1>Usuários</h1>
-      <ion-button mode="ios" color="tertiary">
+      <ion-button mode="ios" color="tertiary" (click)="openItem(0)">
         Adicionar Usuário
         <ion-icon slot="end" name="person-add"></ion-icon>
       </ion-button>
@@ -28,6 +28,20 @@
         <ion-col>ID</ion-col>
         <ion-col>Nome</ion-col>
         <ion-col>Usuário</ion-col>
+        <ion-col>Data Criação</ion-col>
+        <ion-col>Excluir</ion-col>
+      </ion-row>
+
+      <ion-row class="item" *ngFor="let p of usuarios">
+        <ion-col (click)="openItem(p.id)">{{p.id}}</ion-col>
+        <ion-col (click)="openItem(p.id)">{{p.nome}}</ion-col>
+        <ion-col (click)="openItem(p.id)">{{p.login}}</ion-col>
+        <ion-col (click)="openItem(p.id)">{{p.data_criacao.toLocaleDateString()}}</ion-col>
+        <ion-col>
+          <ion-button fill="clear" (click)="delete(p)" size="small">
+            <ion-icon slot="icon-only" color="dark" name="trash"></ion-icon>
+          </ion-button>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </div>

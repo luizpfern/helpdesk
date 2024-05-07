@@ -20,9 +20,7 @@ export class ListaPatrimoniosPage implements OnInit {
     this.patrimonios = this.patrimoniosOrigem
   }
 
-  async ngOnInit() {
-
-  }
+  async ngOnInit() {}
 
   openItem(id:number) {
     this.router.navigateByUrl('/patrimonios/'+id);
@@ -50,7 +48,5 @@ export class ListaPatrimoniosPage implements OnInit {
       await this.servidor.deletaPatrimonio(patrimonio.id);
       this.patrimonios = await this.servidor.getPatrimonios();
     }
-
-
   }
 }

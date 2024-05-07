@@ -29,6 +29,10 @@
 					<h2>Registre-se</h2>
 
 					<ion-row>
+						<ion-input label="Nome" label-placement="floating" fill="outline" [(ngModel)]="register.name" type="text"></ion-input>
+					</ion-row>
+
+					<ion-row>
 						<ion-input label="Usuário" label-placement="floating" fill="outline" [(ngModel)]="register.user" type="text"></ion-input>
 					</ion-row>
 		
@@ -41,7 +45,7 @@
 					</ion-row>
 		
 					<ion-row>
-						<ion-button [disabled]="!register.user || !register.pass || !register.passConfirm" color="tertiary" class="loginBtn" (click)="submitRegister(register.user, register.pass, register.passConfirm)">Registrar</ion-button>
+						<ion-button [disabled]="!register.user || !register.pass || !register.passConfirm" color="tertiary" class="loginBtn" (click)="submitRegister(register.user, register.pass, register.passConfirm,register.name)">Registrar</ion-button>
 					</ion-row>
 
 					<ion-row>
@@ -88,6 +92,10 @@
 				<h2 style="text-align: center;">Registre-se</h2>
 
 				<ion-row style="margin: 3%;">
+					<ion-input label="Nome" label-placement="floating" fill="outline" [(ngModel)]="register.name" type="text"></ion-input>
+				</ion-row>
+
+				<ion-row style="margin: 3%;">
 					<ion-input label="Usuário" label-placement="floating" fill="outline" [(ngModel)]="register.user" mode="md" type="text"></ion-input>
 				</ion-row>
 
@@ -100,7 +108,7 @@
 				</ion-row>
 
 				<ion-row style="margin: 3%;">
-					<ion-button [disabled]="!register.user || !register.pass || !register.passConfirm" color="tertiary" class="loginBtnmob" mode="ios" (click)="submitRegister(register.user, register.pass, register.passConfirm)">Registrar</ion-button>
+					<ion-button [disabled]="!register.user || !register.pass || !register.passConfirm" color="tertiary" class="loginBtnmob" mode="ios" (click)="submitRegister(register.user, register.pass, register.passConfirm, register.name)">Registrar</ion-button>
 				</ion-row>
 				
 				<ion-row style="margin: 3%;">

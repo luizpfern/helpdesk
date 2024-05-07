@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServidorService } from '../servidor.service';
 
 @Component({
   selector: 'app-lista-usuarios',
@@ -8,11 +9,28 @@ import { Router } from '@angular/router';
 })
 export class ListaUsuariosPage implements OnInit {
 
-  usuarios:any [] = [];
+  public usuarios:any = [];
+  public usuariosOrigem: any = [];
+  public busca: string = ''
 
-  constructor(public router:Router) { }
+  constructor(public servidor: ServidorService, private router: Router) { }
 
-  ngOnInit() {
+  async ionViewWillEnter(){
+    this.usuariosOrigem = await this.servidor.getUsuarios();
+    this.usuarios = this.usuariosOrigem
+  }
+
+  ngOnInit() {}
+
+  openItem(id:number) {
+    this.router.navigateByUrl('/usuarios/'+id);
+  }
+
+  async delete(usuario:any) {
+    if ((await this.servidor.confirmaGenerico(`Deseja excluir ${usuario.nome}`)) == 'confirm') {
+      await this.servidor.deletaUsuario(usuario.id);
+      this.usuarios = await this.servidor.getUsuarios();
+    }
   }
 
   navigateBack() {

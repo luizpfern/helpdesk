@@ -27,12 +27,17 @@ const routes: Routes = [
   {
     path: 'patrimonios/:id',canActivate: [AuthGuard],
     loadChildren: () => import('./patrimonios/patrimonios.module').then( m => m.PatrimoniosPageModule)
-  },  {
-    path: 'lista-usuarios',
+  },
+  {
+    path: 'lista-usuarios',canActivate: [AuthGuard],
     loadChildren: () => import('./lista-usuarios/lista-usuarios.module').then( m => m.ListaUsuariosPageModule)
   },
   {
-    path: 'usuarios',
+    path: 'usuarios',canActivate: [AuthGuard],
+    loadChildren: () => import('./usuarios/usuarios.module').then( m => m.UsuariosPageModule)
+  },
+  {
+    path: 'usuarios/:id',canActivate: [AuthGuard],
     loadChildren: () => import('./usuarios/usuarios.module').then( m => m.UsuariosPageModule)
   },
 
