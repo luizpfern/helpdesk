@@ -10,4 +10,37 @@
       <ion-title size="large">usuarios</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-content class="ion-padding">
+
+    <h2>Usuários</h2>
+  
+    <form>
+  
+      <ion-list>
+        <ion-item>
+          <ion-select label="Escolha o tipo de usuário" placeholder="Selecione o Usuário">
+            <ion-select-option value="Cliente">Cliente</ion-select-option>
+            <ion-select-option value="Funcionário">Funcionário</ion-select-option>
+            <ion-select-option value="Gerente">Gerente</ion-select-option>
+          </ion-select>        
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="password" label="Senha" labelPlacement="stacked" placeholder="Digite a senha"  name="senha" required="true"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="text" label="usuario" labelPlacement="stacked" placeholder="Digite o usuario" name="usuario" required="true"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="text" label="nome" labelPlacement="stacked" placeholder="Digite o nome" name="nome" required="true"></ion-input>
+        </ion-item>
+
+      </ion-list>
+    
+      <ion-button color="tertiary" >Salvar</ion-button>
+      <ion-button color="dark" >Fechar</ion-button>
+  
+    </form>
 </ion-content>
