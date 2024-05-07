@@ -14,7 +14,7 @@
 
     <h2>Usuários</h2>
   
-    <form (ngSubmit)="onSubmit(usuarios)">
+    <form>
   
       <ion-list>
           <ion-select label="Escolha o tipo de usuário" placeholder="Selecione o Usuário">
@@ -28,21 +28,21 @@
 
 
         <ion-item>
-          <ion-input type="password" label="Senha" labelPlacement="stacked" placeholder="Digite a senha" [(ngModel)]="usuario.senha" name="senha" required="true"></ion-input>
+          <ion-input type="password" label="Senha" labelPlacement="stacked" placeholder="Digite a senha"  name="senha" required="true"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input type="text" label="usuario" labelPlacement="stacked" placeholder="Digite o usuario" [(ngModel)]="usuario.senha" name="usuario" required="true"></ion-input>
+          <ion-input type="text" label="usuario" labelPlacement="stacked" placeholder="Digite o usuario" name="usuario" required="true"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input type="text" label="nome" labelPlacement="stacked" placeholder="Digite o nome" [(ngModel)]="usuario.senha" name="nome" required="true"></ion-input>
+          <ion-input type="text" label="nome" labelPlacement="stacked" placeholder="Digite o nome" name="nome" required="true"></ion-input>
         </ion-item>
 
       </ion-list>
     
-      <ion-button color="tertiary" type="submit" [disabled]="!usuario.tipo || !usuario.senha">Salvar</ion-button>
-      <ion-button color="dark" (click)="close()">Fechar</ion-button>
+      <ion-button color="tertiary" >Salvar</ion-button>
+      <ion-button color="dark" >Fechar</ion-button>
   
     </form>
 </ion-content>
