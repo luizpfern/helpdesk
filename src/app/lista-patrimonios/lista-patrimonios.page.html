@@ -32,11 +32,11 @@
         <ion-col>Excluir</ion-col>
       </ion-row>
 
-      <ion-row class="item" *ngFor="let p of patrimonios" (dblclick)="openItem(p.id)">
-        <ion-col>{{p.id}}</ion-col>
-        <ion-col>{{p.descricao}}</ion-col>
-        <ion-col>{{p.quantidade}}</ion-col>
-        <ion-col>{{p.data_criacao.toLocaleDateString()}}</ion-col>
+      <ion-row class="item" *ngFor="let p of patrimonios">
+        <ion-col (click)="openItem(p.id)">{{p.id}}</ion-col>
+        <ion-col (click)="openItem(p.id)">{{p.descricao}}</ion-col>
+        <ion-col (click)="openItem(p.id)">{{p.quantidade}}</ion-col>
+        <ion-col (click)="openItem(p.id)">{{p.data_criacao.toLocaleDateString()}}</ion-col>
         <ion-col>
           <ion-button fill="clear" (click)="delete(p)" size="small">
             <ion-icon slot="icon-only" color="dark" name="trash"></ion-icon>

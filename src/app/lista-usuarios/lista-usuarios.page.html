@@ -1,8 +1,8 @@
 <ion-header class="custom">
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" (click)="navigateBack()">
       <ion-button>
-        <ion-icon slot="icon-only" name="arrow-back" (click)="navigateBack()"></ion-icon>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>Lista de Usuários</ion-title>
