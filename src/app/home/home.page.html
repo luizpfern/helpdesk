@@ -9,15 +9,15 @@
 					<h2>Conecte-se</h2>
 					
 					<ion-row>
-						<ion-input label="Usuário" label-placement="floating" fill="outline" [(ngModel)]="login.user" type="text"></ion-input>
+						<ion-input class="teste" label="Usuário" label-placement="floating" fill="outline" [(ngModel)]="login.login" type="text"></ion-input>
 					</ion-row>
 		
 					<ion-row>
-						<ion-input label="Senha" label-placement="floating" fill="outline" [(ngModel)]="login.pass" type="password" [clearInput]="true"></ion-input>
+						<ion-input label="Senha" label-placement="floating" fill="outline" [(ngModel)]="login.senha" type="password" [clearInput]="true"></ion-input>
 					</ion-row>
 		
 					<ion-row>
-						<ion-button [disabled]="!login.user || !login.pass" color="tertiary" class="loginBtn" (click)="submitLogin(login.user, login.pass)">Login</ion-button>
+						<ion-button [disabled]="!login.login || !login.senha" color="tertiary" class="loginBtn" (click)="submitLogin(login.login, login.senha)">Login</ion-button>
 					</ion-row>
 	
 					<ion-row>
@@ -29,23 +29,23 @@
 					<h2>Registre-se</h2>
 
 					<ion-row>
-						<ion-input label="Nome" label-placement="floating" fill="outline" [(ngModel)]="register.name" type="text"></ion-input>
+						<ion-input label="Nome" label-placement="floating" fill="outline" [(ngModel)]="register.nome" type="text"></ion-input>
 					</ion-row>
 
 					<ion-row>
-						<ion-input label="Usuário" label-placement="floating" fill="outline" [(ngModel)]="register.user" type="text"></ion-input>
+						<ion-input label="Usuário" label-placement="floating" fill="outline" [(ngModel)]="register.login" type="text"></ion-input>
 					</ion-row>
 		
 					<ion-row>
-						<ion-input label="Senha" label-placement="floating" fill="outline" [(ngModel)]="register.pass" type="password" [clearInput]="true"></ion-input>
+						<ion-input label="Senha" label-placement="floating" fill="outline" [(ngModel)]="register.senha" type="password" [clearInput]="true"></ion-input>
 					</ion-row>
 
 					<ion-row>
-						<ion-input label="Confirme a senha" label-placement="floating" fill="outline" [(ngModel)]="register.passConfirm" type="password" [clearInput]="true"></ion-input>
+						<ion-input label="Confirme a senha" label-placement="floating" fill="outline" [(ngModel)]="register.confirmaSenha" type="password" [clearInput]="true"></ion-input>
 					</ion-row>
 		
 					<ion-row>
-						<ion-button [disabled]="!register.user || !register.pass || !register.passConfirm" color="tertiary" class="loginBtn" (click)="submitRegister(register.user, register.pass, register.passConfirm,register.name)">Registrar</ion-button>
+						<ion-button [disabled]="!register.login || !register.senha || !register.confirmaSenha" color="tertiary" class="loginBtn" (click)="submitRegister(register.login, register.senha, register.confirmaSenha,register.nome)">Registrar</ion-button>
 					</ion-row>
 
 					<ion-row>
@@ -72,15 +72,15 @@
 				<h2 style="text-align: center;">Conecte-se</h2>
 				
 				<ion-row style="margin: 3%">
-					<ion-input label="Usuário" label-placement="floating" fill="outline" [(ngModel)]="login.user" mode="md" type="text"></ion-input>
+					<ion-input label="Usuário" label-placement="floating" fill="outline" [(ngModel)]="login.login" mode="md" type="text"></ion-input>
 				</ion-row>
 
 				<ion-row style="margin: 3%;">
-					<ion-input label="Senha" label-placement="floating" fill="outline" [(ngModel)]="login.pass" type="password" mode="md" [clearInput]="true"></ion-input>
+					<ion-input label="Senha" label-placement="floating" fill="outline" [(ngModel)]="login.senha" type="password" mode="md" [clearInput]="true"></ion-input>
 				</ion-row>
 
 				<ion-row style="margin: 3%;">
-					<ion-button [disabled]="!login.user || !login.pass" color="tertiary" class="loginBtnmob" mode="ios" (click)="submitLogin(login.user, login.pass)">Login</ion-button>
+					<ion-button [disabled]="!login.login || !login.senha" color="tertiary" class="loginBtnmob" mode="ios" (click)="submitLogin(login.login, login.senha)">Login</ion-button>
 				</ion-row>
 				<ion-row style="margin: 3%;">
 					<ion-label>Não tem cadastro? <ion-label class="registerLabel" (click)="alteraLogin()">Registre-se!</ion-label></ion-label>
@@ -92,23 +92,23 @@
 				<h2 style="text-align: center;">Registre-se</h2>
 
 				<ion-row style="margin: 3%;">
-					<ion-input label="Nome" label-placement="floating" fill="outline" [(ngModel)]="register.name" type="text"></ion-input>
+					<ion-input label="Nome" label-placement="floating" fill="outline" [(ngModel)]="register.nome" type="text"></ion-input>
 				</ion-row>
 
 				<ion-row style="margin: 3%;">
-					<ion-input label="Usuário" label-placement="floating" fill="outline" [(ngModel)]="register.user" mode="md" type="text"></ion-input>
+					<ion-input label="Usuário" label-placement="floating" fill="outline" [(ngModel)]="register.login" mode="md" type="text"></ion-input>
 				</ion-row>
 
 				<ion-row style="margin: 3%;">
-					<ion-input label="Senha" label-placement="floating" fill="outline" [(ngModel)]="register.pass" mode="md" type="password" [clearInput]="true"></ion-input>
+					<ion-input label="Senha" label-placement="floating" fill="outline" [(ngModel)]="register.senha" mode="md" type="password" [clearInput]="true"></ion-input>
 				</ion-row>
 
 				<ion-row style="margin: 3%;">
-					<ion-input label="Confirme a senha" label-placement="floating" fill="outline" [(ngModel)]="register.passConfirm" mode="md" type="password" [clearInput]="true"></ion-input>
+					<ion-input label="Confirme a senha" label-placement="floating" fill="outline" [(ngModel)]="register.confirmaSenha" mode="md" type="password" [clearInput]="true"></ion-input>
 				</ion-row>
 
 				<ion-row style="margin: 3%;">
-					<ion-button [disabled]="!register.user || !register.pass || !register.passConfirm" color="tertiary" class="loginBtnmob" mode="ios" (click)="submitRegister(register.user, register.pass, register.passConfirm, register.name)">Registrar</ion-button>
+					<ion-button [disabled]="!register.login || !register.senha || !register.confirmaSenha" color="tertiary" class="loginBtnmob" mode="ios" (click)="submitRegister(register.login, register.senha, register.confirmaSenha, register.nome)">Registrar</ion-button>
 				</ion-row>
 				
 				<ion-row style="margin: 3%;">

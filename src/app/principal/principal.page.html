@@ -1,16 +1,16 @@
 <ion-menu contentId="main-content">
   <ion-header class="custom">
-    <ion-toolbar>
+    <ion-toolbar color="tertiary">
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
     <ion-list>
-      <ion-item [button]="true" (click)="open('/lista-patrimonios')">
+      <ion-item *ngIf="this.servidor.usuario.tipo_acesso == 2 || this.servidor.usuario.tipo_acesso == 1" [button]="true" (click)="open('/lista-patrimonios')">
         <ion-icon name="layers" color="dark" slot="end"></ion-icon>
         <ion-label>Patrimônios</ion-label>
       </ion-item>
-      <ion-item [button]="true" (click)="open('/lista-usuarios')">
+      <ion-item *ngIf="this.servidor.usuario.tipo_acesso == 2" [button]="true" (click)="open('/lista-usuarios')">
         <ion-icon name="person" color="dark" slot="end"></ion-icon>
         <ion-label>Usuários</ion-label>
       </ion-item>
@@ -28,11 +28,11 @@
 
 <div class="ion-page" id="main-content">
   <ion-header class="custom">
-    <ion-toolbar>
+    <ion-toolbar color="tertiary">
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>Bem vindo {{servidor.usuario.nome}}!</ion-title>
+      <ion-title>Bem-vindo, {{servidor.usuario.nome}}!</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">

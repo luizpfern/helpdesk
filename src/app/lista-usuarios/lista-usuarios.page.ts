@@ -17,6 +17,7 @@ export class ListaUsuariosPage implements OnInit {
 
   async ionViewWillEnter(){
     this.usuariosOrigem = await this.servidor.getUsuarios();
+    console.log('this.usuariosOrigem:', this.usuariosOrigem)
     this.usuarios = this.usuariosOrigem
   }
 

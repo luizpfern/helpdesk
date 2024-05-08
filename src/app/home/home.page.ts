@@ -12,16 +12,16 @@ export class HomePage {
 
   constructor(private router:Router, public servidor:ServidorService,public platform:Platform) {}
   
-  login = {user:'', pass:''}
-  register = {user: '', pass: '', passConfirm:'', name:''}
+  login = {login:'', senha:''}
+  register = {login: '', senha: '', confirmaSenha:'', nome:''}
   isLogin = true;
 
   ionViewWillEnter(){
     this.servidor.isMobile = this.platform.is('mobile');
   }
 
-  async submitLogin(user:string, pass:string) {
-    if (await this.servidor.efetueLogin(user,pass) == true) {
+  async submitLogin(login:string, senha:string) {
+    if (await this.servidor.efetueLogin(login,senha) == true) {
       this.router.navigateByUrl('/principal')
       
     } else {
@@ -30,11 +30,11 @@ export class HomePage {
     this.limpaInputs();
   }
 
-  async submitRegister(user: string, pass: string, passConfirm: string, name:string) {
-    if (pass !== passConfirm) {
+  async submitRegister(login: string, senha: string, confimaSenha: string, nome:string) {
+    if (senha !== confimaSenha) {
       this.servidor.toastGenerico('As senhas de diferem!')
     } else {
-      await this.servidor.efetueRegistroUsuario(user,pass,name);
+      await this.servidor.efetueRegistroUsuario(login,senha,nome);
       this.limpaInputs();
       this.servidor.toastGenerico('Conta Registrada!')
     }
@@ -46,8 +46,8 @@ export class HomePage {
   }
 
   limpaInputs() {
-    this.login = {user:'', pass:''};
-    this.register = {user: '', pass: '', passConfirm:'', name:''};
+    this.login = {login:'', senha:''};
+    this.register = {login: '', senha: '', confirmaSenha:'', nome:''};
   }
 
 }

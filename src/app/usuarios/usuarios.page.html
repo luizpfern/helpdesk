@@ -1,46 +1,45 @@
-<ion-header [translucent]="true">
+<ion-header class="custom">
   <ion-toolbar>
-    <ion-title>usuarios</ion-title>
+    <ion-buttons slot="start" (click)="close()">
+      <ion-button>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Usuários</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">usuarios</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
+<ion-content class="ion-padding">
 
-    <h2>Usuários</h2>
+  <h2>Usuários</h2>
+
+  <form (ngSubmit)="onSubmit(usuario)">
+
+    <ion-list>
+      <ion-item>
+        <ion-input [(ngModel)]="usuario.login" type="text" label="usuario" labelPlacement="stacked" placeholder="Digite nome de usuário" name="usuario" required="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input [(ngModel)]="usuario.nome" type="text" label="nome" labelPlacement="stacked" placeholder="Digite o nome" name="nome" required="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input [(ngModel)]="usuario.senha" type="password" label="Senha" labelPlacement="stacked" placeholder="Digite a senha"  name="senha" required="true"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Escolha o tipo de usuário" placeholder="Selecione o tipo de Usuário" [(ngModel)]="usuario.tipo_acesso" name="tipo_acesso">
+          <ion-select-option [value]="0">Cliente</ion-select-option>
+          <ion-select-option [value]="1">Funcionário</ion-select-option>
+          <ion-select-option [value]="2">Gerente</ion-select-option>
+        </ion-select>        
+      </ion-item>
+
+    </ion-list>
   
-    <form>
-  
-      <ion-list>
-        <ion-item>
-          <ion-select label="Escolha o tipo de usuário" placeholder="Selecione o Usuário">
-            <ion-select-option value="Cliente">Cliente</ion-select-option>
-            <ion-select-option value="Funcionário">Funcionário</ion-select-option>
-            <ion-select-option value="Gerente">Gerente</ion-select-option>
-          </ion-select>        
-        </ion-item>
+    <ion-button color="tertiary" type="submit">Salvar</ion-button>
+    <ion-button color="dark" (click)="close()">Fechar</ion-button>
 
-        <ion-item>
-          <ion-input type="password" label="Senha" labelPlacement="stacked" placeholder="Digite a senha"  name="senha" required="true"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-input type="text" label="usuario" labelPlacement="stacked" placeholder="Digite o usuario" name="usuario" required="true"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-input type="text" label="nome" labelPlacement="stacked" placeholder="Digite o nome" name="nome" required="true"></ion-input>
-        </ion-item>
-
-      </ion-list>
-    
-      <ion-button color="tertiary" >Salvar</ion-button>
-      <ion-button color="dark" >Fechar</ion-button>
-  
-    </form>
+  </form>
 </ion-content>

@@ -28,6 +28,7 @@
         <ion-col>ID</ion-col>
         <ion-col>Nome</ion-col>
         <ion-col>Usuário</ion-col>
+        <ion-col>Tipo</ion-col>
         <ion-col>Data Criação</ion-col>
         <ion-col>Excluir</ion-col>
       </ion-row>
@@ -36,6 +37,7 @@
         <ion-col (click)="openItem(p.id)">{{p.id}}</ion-col>
         <ion-col (click)="openItem(p.id)">{{p.nome}}</ion-col>
         <ion-col (click)="openItem(p.id)">{{p.login}}</ion-col>
+        <ion-col (click)="openItem(p.id)">{{p.tipo_descricao}}</ion-col>
         <ion-col (click)="openItem(p.id)">{{p.data_criacao.toLocaleDateString()}}</ion-col>
         <ion-col>
           <ion-button fill="clear" (click)="delete(p)" size="small">

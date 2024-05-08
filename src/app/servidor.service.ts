@@ -30,8 +30,8 @@ export class ServidorService {
     }
   }
   
-  async efetueRegistroUsuario(user:string, pass:string, name:string) {
-    await pool.sql`INSERT INTO USUARIOS (login,senha,tipo_acesso,nome) values (${user},${pass},0,${name})`
+  async efetueRegistroUsuario(login:string, senha:string, nome:string) {
+    await pool.sql`INSERT INTO USUARIOS (login,senha,tipo_acesso,nome) values (${login},${senha},0,${nome})`
   }
 
   async getPatrimonios(id?:number) {
@@ -55,16 +55,16 @@ export class ServidorService {
 
   async getUsuarios(id?:number) {
     const loading = await this.loadingGenerico('Carregando Usuários');
-    let result = id ? (await pool.sql`SELECT * FROM USUARIOS WHERE id=${id}`).rows[0] : (await pool.sql`SELECT * FROM USUARIOS`).rows;
+    let result = id ? (await pool.sql`SELECT * FROM USUARIOS WHERE id=${id}`).rows[0] : (await pool.sql`SELECT *,(CASE WHEN tipo_acesso = 0 THEN 'Cliente' WHEN tipo_acesso = 1 THEN 'Funcionário' WHEN tipo_acesso = 2 THEN 'Gerente' ELSE 'Desconhecido' END) as tipo_descricao FROM USUARIOS`).rows;
     loading.dismiss();
     return result
   }
 
-  async registraUsuario(data:{user:string, pass:string, name:string, type:number},id?:number) {
+  async registraUsuario(data:{login:string, senha:string, nome:string, tipo_acesso:number},id?:number) {
     if (id != 0) {
-      await pool.sql`UPDATE USUARIOS SET nome=${data.name}, login=${data.user}, senha=${data.pass}, tipo_acesso=${data.type} WHERE id=${id}`;
+      await pool.sql`UPDATE USUARIOS SET nome=${data.nome}, login=${data.login}, senha=${data.senha}, tipo_acesso=${data.tipo_acesso} WHERE id=${id}`;
     } else {
-      await pool.sql`INSERT INTO USUARIOS (nome,login,senha,tipo_acesso) values (${data.name},${data.user},${data.pass},${data.type})`;
+      await pool.sql`INSERT INTO USUARIOS (nome,login,senha,tipo_acesso) values (${data.nome},${data.login},${data.senha},${data.tipo_acesso})`;
     }
   }
 
