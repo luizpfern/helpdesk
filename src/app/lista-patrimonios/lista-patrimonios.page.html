@@ -29,6 +29,7 @@
         <ion-col>Descrição</ion-col>
         <ion-col>Quantidade</ion-col>
         <ion-col>Data Criação</ion-col>
+        <ion-col>Valor</ion-col>
         <ion-col>Excluir</ion-col>
       </ion-row>
 
@@ -36,6 +37,7 @@
         <ion-col (click)="openItem(p.id)">{{p.id}}</ion-col>
         <ion-col (click)="openItem(p.id)">{{p.descricao}}</ion-col>
         <ion-col (click)="openItem(p.id)">{{p.quantidade}}</ion-col>
+        <ion-col (click)="openItem(p.id)">R${{(+p.valor).toFixed(2)}}</ion-col>
         <ion-col (click)="openItem(p.id)">{{p.data_criacao.toLocaleDateString()}}</ion-col>
         <ion-col>
           <ion-button fill="clear" (click)="delete(p)" size="small">

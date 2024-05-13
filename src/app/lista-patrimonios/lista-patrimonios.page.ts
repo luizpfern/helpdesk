@@ -17,6 +17,7 @@ export class ListaPatrimoniosPage implements OnInit {
 
   async ionViewWillEnter(){
     this.patrimoniosOrigem = await this.servidor.getPatrimonios();
+    console.log('this.patrimoniosOrigem:', this.patrimoniosOrigem)
     this.patrimonios = this.patrimoniosOrigem
   }
 

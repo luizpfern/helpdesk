@@ -23,9 +23,13 @@
       <ion-item>
         <ion-input type="number" label="Quantidade" labelPlacement="stacked" placeholder="Digite a quantidade" [(ngModel)]="patrimonio.quantidade" name="quantidade" required="true"></ion-input>
       </ion-item>
+
+      <ion-item>
+        <ion-input type="number" label="Valor" labelPlacement="stacked" placeholder="Digite o valor" [(ngModel)]="patrimonio.valor" name="valor" required="true"></ion-input>
+      </ion-item>
     </ion-list>
   
-    <ion-button color="tertiary" type="submit" [disabled]="!patrimonio.descricao || !patrimonio.quantidade">Salvar</ion-button>
+    <ion-button color="tertiary" type="submit" [disabled]="!patrimonio.descricao || !patrimonio.quantidade || !patrimonio.valor">Salvar</ion-button>
     <ion-button color="dark" (click)="close()">Fechar</ion-button>
 
   </form>

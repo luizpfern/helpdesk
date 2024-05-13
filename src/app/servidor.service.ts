@@ -41,11 +41,11 @@ export class ServidorService {
     return result
   }
 
-  async registraPatrimonio(data:{descricao:string,quantidade:number},id?:number) {
+  async registraPatrimonio(data:{descricao:string,quantidade:number, valor:number},id?:number) {
     if (id != 0) {
-      await pool.sql`UPDATE PATRIMONIOS SET descricao=${data.descricao}, quantidade=${data.quantidade} WHERE id=${id}`;
+      await pool.sql`UPDATE PATRIMONIOS SET descricao=${data.descricao}, quantidade=${data.quantidade}, valor=${data.valor} WHERE id=${id}`;
     } else {
-      await pool.sql`INSERT INTO PATRIMONIOS (quantidade,descricao) values (${data.quantidade},${data.descricao})`;
+      await pool.sql`INSERT INTO PATRIMONIOS (quantidade,descricao,valor) values (${data.quantidade},${data.descricao},${data.valor})`;
     }
   }
 
