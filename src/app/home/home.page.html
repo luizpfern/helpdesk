@@ -13,7 +13,7 @@
 					</ion-row>
 		
 					<ion-row>
-						<ion-input label="Senha" label-placement="floating" fill="outline" [(ngModel)]="login.senha" type="password" [clearInput]="true"></ion-input>
+						<ion-input (keyup.enter)="submitLogin(login.login, login.senha)" label="Senha" label-placement="floating" fill="outline" [(ngModel)]="login.senha" type="password" [clearInput]="true"></ion-input>
 					</ion-row>
 		
 					<ion-row>
@@ -41,7 +41,7 @@
 					</ion-row>
 
 					<ion-row>
-						<ion-input label="Confirme a senha" label-placement="floating" fill="outline" [(ngModel)]="register.confirmaSenha" type="password" [clearInput]="true"></ion-input>
+						<ion-input (keyup.enter)="submitRegister(register.login, register.senha, register.confirmaSenha,register.nome)" label="Confirme a senha" label-placement="floating" fill="outline" [(ngModel)]="register.confirmaSenha" type="password" [clearInput]="true"></ion-input>
 					</ion-row>
 		
 					<ion-row>

@@ -40,6 +40,15 @@ const routes: Routes = [
     path: 'usuarios/:id',canActivate: [AuthGuard],
     loadChildren: () => import('./usuarios/usuarios.module').then( m => m.UsuariosPageModule)
   },
+  {
+    path: 'lista-chamados',canActivate: [AuthGuard],
+    loadChildren: () => import('./lista-chamados/lista-chamados.module').then( m => m.ListaChamadosPageModule)
+  },
+  {
+    path: 'chamados',canActivate: [AuthGuard],
+    loadChildren: () => import('./chamados/chamados.module').then( m => m.ChamadosPageModule)
+  },
+
 
 ];
 
