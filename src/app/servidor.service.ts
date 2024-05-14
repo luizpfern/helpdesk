@@ -36,7 +36,7 @@ export class ServidorService {
 
   async getPatrimonios(id?:number) {
     const loading = await this.loadingGenerico('Carregando Patrimônios');
-    let result = id ? (await pool.sql`SELECT * FROM PATRIMONIOS WHERE id=${id}`).rows[0] : (await pool.sql`SELECT * FROM PATRIMONIOS`).rows;
+    let result = id ? (await pool.sql`SELECT * FROM PATRIMONIOS WHERE id=${id}`).rows[0] : (await pool.sql`SELECT * FROM PATRIMONIOS order by id`).rows;
     loading.dismiss();
     return result
   }
