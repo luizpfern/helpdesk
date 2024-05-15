@@ -17,4 +17,8 @@ export class ListaChamadosPage implements OnInit {
   navigateBack() {
     this.router.navigateByUrl('/principal')
   }
+
+  goTo(route:string) {
+    this.router.navigateByUrl(route)
+  }
 }

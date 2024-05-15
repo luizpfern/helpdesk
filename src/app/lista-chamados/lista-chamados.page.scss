@@ -1,0 +1,99 @@
+.main {
+    padding: 0 20%;
+}
+
+.card {
+    background-color: rgb(244, 244, 244);
+    border-radius: 15px;
+    padding: 20px 40px;
+    box-shadow: 5px 5px 10px #c7c7c7,
+    -5px -5px 10px #f9f9f9;
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        font-weight: bolder;
+        font-size: 40px;
+        padding: 0;
+        margin: 0;
+    }
+
+    ion-button {
+        align-self: flex-end;
+        width: 180px;
+        height: 30px;
+        font-weight: bold;
+    }
+}
+
+.listbox {
+    display: flex;
+    align-items: center;
+
+    ion-toggle {
+        margin-left: 18px;
+        margin-top: 10px;
+    }
+}
+
+
+.header {
+    font-weight: bold;
+    border-bottom: solid #dcdcdc 1px;
+}
+  
+.item {
+    padding: 8px 0;
+    border-bottom: solid #dcdcdc 1px;
+    align-items: center;
+}
+
+.card2 {
+    width: 100%;
+    background-color: rgb(244, 244, 244);
+    border-radius: 15px;
+    padding: 20px 40px;
+    box-shadow: 5px 5px 10px #c7c7c7,
+    -5px -5px 10px #f9f9f9;
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        font-weight: bolder;
+        font-size: 30px;
+        padding: 0;
+        margin: 0;
+    }
+
+    h4 {
+        font-weight: bold;
+    }
+
+}
+
+.card2 + .card2 {
+    margin-left: 20px;
+}
+
+.item:hover {
+    cursor: pointer;
+    background-color: #eeeeee;
+  }
+
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+
+.animacao {
+    ion-icon {
+        animation: spin  1.5s ease;
+
+    }
+}

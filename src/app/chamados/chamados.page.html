@@ -1,13 +1,14 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>chamados</ion-title>
+<ion-header class="custom">
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start" (click)="navigateBack()">
+      <ion-button>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Chamado</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">chamados</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
 </ion-content>

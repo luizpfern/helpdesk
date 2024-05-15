@@ -10,5 +10,73 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <div class="main" *ngIf="this.servidor.usuario.tipo_acesso==0">
+    <div class="card">
+      <h1>Precisa de ajuda?</h1>
+      <h3>Abra um chamado e seja atendido por nossos colaboradores</h3>
+      <ion-button color="tertiary" mode="ios" (click)="goTo('/chamados')">Abrir Chamado</ion-button>
+    </div>
+
+    <div class="listbox">
+      <h1>Meus Chamados</h1>
+      <ion-toggle labelPlacement="end" color="tertiary">Ver em aberto</ion-toggle>
+    </div>
+
+    <div>
+
+      <ion-searchbar placeholder="Buscar por Títulos" clear-icon="close" mode="ios" class="ion-no-padding"></ion-searchbar>
+
+      <ion-grid>
+        <ion-row class="header">
+          <ion-col>Titulo</ion-col>
+          <ion-col>Status</ion-col>
+          <ion-col>Data</ion-col>
+        </ion-row>
+  
+        <ion-row class="item">
+          <ion-col>TESTE</ion-col>
+          <ion-col>Concluído</ion-col>
+          <ion-col>20/01/2024</ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <div class="main" *ngIf="this.servidor.usuario.tipo_acesso!=0">
+    <div style="display: flex; justify-content: space-between 100px;">
+      <div class="card2">
+        <h1>Meta Diária</h1>
+        <h3>Quantidade de chamados concluídos por você!</h3>
+        <h4>23 de 100 Chamados</h4>
+      </div>
+  
+      <div class="card2">
+        <h1>Chamados concluídos</h1>
+        <h3>Esta é a quantidade de chamados concluídos pela empresa hoje!</h3>
+        <h4>234 Chamados concluídos</h4>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+      <h1>Chamados Pendentes</h1>
+      <ion-button color="tertiary" mode="ios" onclick="this.classList.toggle('animacao')">Atualizar <ion-icon name="reload-outline" style="margin-left: 8px;"></ion-icon></ion-button>
+    </div>
+
+    <ion-grid>
+      <ion-row class="header">
+        <ion-col>Titulo</ion-col>
+        <ion-col>Usuario</ion-col>
+        <ion-col>Status</ion-col>
+      </ion-row>
+
+      <ion-row class="item">
+        <ion-col>TESTE</ion-col>
+        <ion-col>FULANO</ion-col>
+        <ion-col>Aguardando</ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </div>
 
 </ion-content>
