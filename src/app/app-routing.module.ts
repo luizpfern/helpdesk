@@ -48,6 +48,10 @@ const routes: Routes = [
     path: 'chamados',canActivate: [AuthGuard],
     loadChildren: () => import('./chamados/chamados.module').then( m => m.ChamadosPageModule)
   },
+  {
+    path: 'chamados/:id',canActivate: [AuthGuard],
+    loadChildren: () => import('./chamados/chamados.module').then( m => m.ChamadosPageModule)
+  },
 
 
 ];

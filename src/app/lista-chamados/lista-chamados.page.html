@@ -14,7 +14,7 @@
     <div class="card">
       <h1>Precisa de ajuda?</h1>
       <h3>Abra um chamado e seja atendido por nossos colaboradores</h3>
-      <ion-button color="tertiary" mode="ios" (click)="goTo('/chamados')">Abrir Chamado</ion-button>
+      <ion-button color="tertiary" mode="ios" (click)="goTo('/chamados/0')">Abrir Chamado</ion-button>
     </div>
 
     <div class="listbox">
@@ -33,10 +33,10 @@
           <ion-col>Data</ion-col>
         </ion-row>
   
-        <ion-row class="item">
-          <ion-col>TESTE</ion-col>
-          <ion-col>Concluído</ion-col>
-          <ion-col>20/01/2024</ion-col>
+        <ion-row class="item" *ngFor="let i of chamados">
+          <ion-col>{{i.titulo}}</ion-col>
+          <ion-col>{{i.status}}</ion-col>
+          <ion-col>{{i.id_patrimonio}}</ion-col>
 
         </ion-row>
       </ion-grid>

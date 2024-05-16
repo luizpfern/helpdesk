@@ -9,9 +9,17 @@ import { Router } from '@angular/router';
 })
 export class ListaChamadosPage implements OnInit {
 
+  chamados:any = []
+  chamadosOrigem:any = []
+
   constructor(public servidor: ServidorService, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  async ionViewWillEnter(){
+    this.chamadosOrigem = await this.servidor.getChamados();
+    this.chamados = this.chamadosOrigem;
+    console.log('this.chamados:', this.chamados)
   }
 
   navigateBack() {

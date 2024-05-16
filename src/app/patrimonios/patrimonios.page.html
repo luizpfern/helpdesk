@@ -28,8 +28,15 @@
         <ion-input type="number" label="Valor" labelPlacement="stacked" placeholder="Digite o valor" [(ngModel)]="patrimonio.valor" name="valor" required="true"></ion-input>
       </ion-item>
     </ion-list>
+
+    <ion-item>
+      <ion-select label="Escolha o tipo de patriônio" placeholder="Selecione o tipo de Patrimônio" [(ngModel)]="patrimonio.tipo_patrimonio" name="tipo_patrimonio">
+        <ion-select-option [value]="0">Produto</ion-select-option>
+        <ion-select-option [value]="1">Serviço</ion-select-option>
+      </ion-select>        
+    </ion-item>
   
-    <ion-button color="tertiary" type="submit" [disabled]="!patrimonio.descricao || !patrimonio.quantidade || !patrimonio.valor">Salvar</ion-button>
+    <ion-button color="tertiary" type="submit" [disabled]="!patrimonio.descricao || !patrimonio.quantidade || !patrimonio.valor || !patrimonio.tipo_patrimonio">Salvar</ion-button>
     <ion-button color="dark" (click)="close()">Fechar</ion-button>
 
   </form>

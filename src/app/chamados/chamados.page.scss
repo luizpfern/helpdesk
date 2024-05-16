@@ -1,0 +1,17 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-form {
+    padding: 15px;
+    margin-top: 15px;
+    width: 50%;
+    height: 40%;
+    box-shadow: 6px 6px 12px #cacaca,
+    -6px -6px 12px #f6f6f6;
+    border-radius: 15px;
+}
+

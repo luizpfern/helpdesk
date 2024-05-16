@@ -41,11 +41,11 @@ export class ServidorService {
     return result
   }
 
-  async registraPatrimonio(data:{descricao:string,quantidade:number, valor:number},id?:number) {
+  async registraPatrimonio(data:{descricao:string,quantidade:number, valor:number, tipo_patrimonio:number},id?:number) {
     if (id != 0) {
-      await pool.sql`UPDATE PATRIMONIOS SET descricao=${data.descricao}, quantidade=${data.quantidade}, valor=${data.valor} WHERE id=${id}`;
+      await pool.sql`UPDATE PATRIMONIOS SET descricao=${data.descricao}, quantidade=${data.quantidade}, valor=${data.valor}, tipo_patrimonio=${data.tipo_patrimonio} WHERE id=${id}`;
     } else {
-      await pool.sql`INSERT INTO PATRIMONIOS (quantidade,descricao,valor) values (${data.quantidade},${data.descricao},${data.valor})`;
+      await pool.sql`INSERT INTO PATRIMONIOS (quantidade,descricao,valor,tipo_patrimonio,id_funcionario) values (${data.quantidade},${data.descricao},${data.valor},${data.tipo_patrimonio},${this.usuario.id})`;
     }
   }
 
@@ -71,6 +71,29 @@ export class ServidorService {
   async deletaUsuario(id:number) {
     await pool.sql`DELETE FROM USUARIOS WHERE id=${id}`;
   }
+
+  async getChamados(id?:number) {
+    const loading = await this.loadingGenerico('Carregando Chamados');
+    let result
+    if (this.usuario.tipo_acesso == 0) {
+      result = id ? (await pool.sql`SELECT * FROM CHAMADOS WHERE id=${id} and id_usuario=${this.usuario.id}`).rows[0] : (await pool.sql`SELECT * FROM CHAMADOS where id_usuario=${this.usuario.id}`).rows;
+    } else {
+      result = id ? (await pool.sql`SELECT * FROM CHAMADOS WHERE id=${id}`).rows[0] : (await pool.sql`SELECT * FROM CHAMADOS`).rows;
+    }
+    loading.dismiss();
+    return result
+  }
+
+  async enviaChamado(data:{id_patrimonio:number, titulo:string, observacao:string}) {
+    await pool.sql`INSERT INTO CHAMADOS (status,id_usuario,id_patrimonio,titulo,observacao) values (0,${this.usuario.id},${data.id_patrimonio},${data.titulo},${data.observacao})`;
+  }
+
+
+
+
+
+
+
 
   async toastGenerico(texto:string) {
     const toast = await this.toast.create({

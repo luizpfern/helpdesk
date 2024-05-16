@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PatrimoniosPage implements OnInit {
 
   id:any = 0;
-  patrimonio:any = {descricao:'',quantidade:'',valor:0}
+  patrimonio:any = {descricao:'',quantidade:'',valor:0, tipo_patrimonio:''}
 
   constructor(public servidor:ServidorService,private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -19,7 +19,7 @@ export class PatrimoniosPage implements OnInit {
     if (this.id>0) this.patrimonio = await this.servidor.getPatrimonios(this.id)
   }
 
-  async onSubmit(patrimonio:{quantidade:number, descricao:string, valor:number}) {
+  async onSubmit(patrimonio:{quantidade:number, descricao:string, valor:number, tipo_patrimonio:number}) {
     await this.servidor.registraPatrimonio(patrimonio,this.id);
     this.router.navigateByUrl('/lista-patrimonios');
   }
