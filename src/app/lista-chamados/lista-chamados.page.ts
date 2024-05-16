@@ -11,6 +11,8 @@ export class ListaChamadosPage implements OnInit {
 
   chamados:any = []
   chamadosOrigem:any = []
+  toggle: boolean = false
+  busca: String = ''
 
   constructor(public servidor: ServidorService, private router: Router) { }
 
@@ -19,14 +21,19 @@ export class ListaChamadosPage implements OnInit {
   async ionViewWillEnter(){
     this.chamadosOrigem = await this.servidor.getChamados();
     this.chamados = this.chamadosOrigem;
+
+    if (this.servidor.usuario.tipo_acesso == 0) {
+      this.chamados = this.chamadosOrigem.filter((e: { status: number; }) => e.status != 0)
+    }
+
     console.log('this.chamados:', this.chamados)
   }
 
-  navigateBack() {
-    this.router.navigateByUrl('/principal')
+  alternarEmAberto() {
+    this.chamados = this.toggle ? this.chamadosOrigem.filter((e: { status: number; }) => e.status != 0) : this.chamadosOrigem.filter((e: { status: number; }) => e.status == 0)
   }
 
-  goTo(route:string) {
+  navigateTo(route:string) {
     this.router.navigateByUrl(route)
   }
 }

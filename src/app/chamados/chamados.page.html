@@ -14,34 +14,35 @@
     <div class="card-form">
       <ion-list>
         <ion-item>
-          <ion-input label="Título" labelPlacement="floating" [(ngModel)]="chamado.titulo"></ion-input>
+          <ion-input [disabled]="id != 0" label="Título" labelPlacement="floating" [(ngModel)]="chamado.titulo"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-select aria-label="Patrimônio" placeholder="Selecione um Patrimônio" [(ngModel)]="chamado.id_patrimonio">
+          <ion-select [disabled]="id != 0" aria-label="Patrimônio" placeholder="Selecione um Patrimônio" [(ngModel)]="chamado.id_patrimonio">
             <ion-select-option *ngFor="let p of listaPatrimonios" [value]="p.id">{{p.descricao}}</ion-select-option>
           </ion-select>
         </ion-item>
     
         <ion-item>
-          <ion-textarea label="Observações" placeholder="Diga mais sobre seu problema" labelPlacement="floating" rows="10" [(ngModel)]="chamado.observacao"></ion-textarea>
+          <ion-textarea [disabled]="id != 0" label="Observações" placeholder="Diga mais sobre seu problema" labelPlacement="floating" rows="10" [(ngModel)]="chamado.observacao"></ion-textarea>
         </ion-item>
       </ion-list>
     </div>
 
     <div class="card-form">
-      <h2>Após a conclusão do seu chamado, sua resposta será exibida abaixo</h2>
+      <h2 *ngIf="this.servidor.usuario.tipo_acesso == 0">Após a conclusão do seu chamado, sua resposta será exibida abaixo</h2>
+      <h2 *ngIf="this.servidor.usuario.tipo_acesso != 0">Digite a solução do chamado abaixo</h2>
       <ion-list>
         <ion-item>
-          <ion-textarea [disabled]="true" label="Conclusão" placeholder="Digite a solução do chamado" labelPlacement="floating" rows="10" [(ngModel)]="chamado.conclusao"></ion-textarea>
+          <ion-textarea *ngIf="this.servidor.usuario.tipo_acesso != 0 || (this.servidor.usuario.tipo_acesso == 0 && this.chamado.status!=0)" [readonly]="this.servidor.usuario.tipo_acesso == 0 || this.chamado.status != 0" label="Conclusão" placeholder="Digite a solução do chamado" labelPlacement="floating" rows="10" [(ngModel)]="chamado.resolucao"></ion-textarea>
         </ion-item>
       </ion-list>
     </div>
 
     <div style="display: flex; margin-top: 10px;">
-      <ion-button color="tertiary" [disabled]="id!=0" *ngIf="this.servidor.usuario.tipo_acesso == 0" (click)="enviarChamado(chamado)">Enviar Chamado</ion-button>
-      <ion-button color="tertiary" [disabled]="chamado.status!='0'" *ngIf="this.servidor.usuario.tipo_acesso != 0" (click)="concluirChamado(chamado.conclusao)">Finalizar Chamado</ion-button>
-      <ion-button color="dark" (click)="navigateBack()">Fechar</ion-button>
+      <ion-button mode="ios" color="tertiary" [disabled]="id != 0" *ngIf="this.servidor.usuario.tipo_acesso == 0" (click)="enviarChamado(chamado)">Enviar Chamado</ion-button>
+      <ion-button mode="ios" color="tertiary" [disabled]="chamado.status!='0'" *ngIf="this.servidor.usuario.tipo_acesso != 0" (click)="concluirChamado(chamado.resolucao)">Finalizar Chamado</ion-button>
+      <ion-button mode="ios" color="dark" (click)="navigateBack()">Fechar</ion-button>
     </div>
 
   </div>

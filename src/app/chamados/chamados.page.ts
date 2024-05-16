@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ChamadosPage implements OnInit {
 
-  chamado:any = {titulo:'', observacao:'', id_patrimonio:'',conclusao:'',status:''};
+  chamado:any = {titulo:'', observacao:'', id_patrimonio:'',resolucao:'',status:''};
   listaPatrimonios:any = [];
   id:any = 0
 
@@ -17,17 +17,18 @@ export class ChamadosPage implements OnInit {
 
   async ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    if (this.id>0) this.chamado = await this.servidor.getPatrimonios(this.id)
-
+    if (this.id>0) this.chamado = await this.servidor.getChamados(this.id)
     this.listaPatrimonios = await this.servidor.getPatrimonios();
   }
 
   async enviarChamado(chamado:{id_patrimonio:number, titulo:string, observacao:string, }) {
     await this.servidor.enviaChamado(chamado)
+    this.navigateBack();
   }
 
-  concluirChamado(conclusao:string) {
-
+  async concluirChamado(resolucao:string) {
+    await this.servidor.concluiChamado(resolucao,this.id);
+    this.navigateBack()
   }
 
   navigateBack() {
