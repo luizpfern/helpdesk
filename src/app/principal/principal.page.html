@@ -37,7 +37,51 @@
   </ion-header>
   <ion-content class="ion-padding">
 
-    <div #acquisitions></div>
+    <div *ngIf="this.servidor.usuario.tipo_acesso==0">
+      <h1 style="font-size: 50px; font-weight: bolder;">Novidades!</h1>
+      <div class="cardpromo">
+        <div class="promo1">
+          <h2>Novo Lançamento!</h2>
+          <h3>Placa de Video NVIDIA RTX4090 Já disponível aqui</h3>
+        </div>
+        <div class="promo2">
+          <img src="../../assets/rtx4090.png" alt="placa de video rtx4090">
+        </div>
+      </div>
+
+      <div class="cardpromo2">
+        <div class="help1">
+          <h1>Precisa de ajuda?</h1>
+          <h2>Abra um chamado e entre em contato com nossos colaboradores para: Manutenções nas Máquinas, Montagem de PC, Problemas com peças entre outros</h2>
+        </div>
+
+        <div class="help2">
+          <ion-button mode="ios" color="tertiary" (click)="open('/lista-chamados')">Ver Chamados</ion-button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="this.servidor.usuario.tipo_acesso!=0">
+      <h1 style="font-size: 40px; font-weight: bolder;">Informações sobre a Empresa</h1>
+
+      <div style="display: flex">
+  
+        <div class="card">
+          <canvas #MeuGrafico></canvas>
+        </div>
+  
+        <div class="card">
+          <canvas #MeuGrafico2></canvas>
+        </div>
+  
+        <div class="card">
+          <canvas #MeuGrafico3></canvas>
+        </div>
+      </div>
+    </div>
+
+
+
 
 
 

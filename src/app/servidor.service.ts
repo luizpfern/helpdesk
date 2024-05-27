@@ -30,10 +30,17 @@ export class ServidorService {
     }
   }
   
-  async efetueRegistroUsuario(login:string, senha:string, nome:string) {
+  async efetueRegistroUsuario(login:string, senha:string, nome:string): Promise<number> {
     const loading = await this.loadingGenerico('Efetuando Registro');
-    await pool.sql`INSERT INTO USUARIOS (login,senha,tipo_acesso,nome) values (${login},${senha},0,${nome})`
+    let valido
+    if ((await pool.sql`SELECT count(*) as q FROM USUARIOS WHERE login=${login}`).rows[0]['q'] > 0) {
+      valido = -1
+    } else {
+      await pool.sql`INSERT INTO USUARIOS (login,senha,tipo_acesso,nome) values (${login},${senha},0,${nome})`
+      valido = 1
+    }
     loading.dismiss();
+    return valido
   }
 
   async getPatrimonios(id?:number) {
@@ -150,6 +157,17 @@ export class ServidorService {
     alert.present()
 
     return (await alert.onDidDismiss()).role
+  }
+
+  async getQtdChamados(funcOnly:boolean) {
+    const loading = this.loadingGenerico('Carregando Dados');
+    const response = !funcOnly ? (await pool.sql`SELECT count(*) as q from CHAMADOS where status=1 and data_criacao=now()::date`).rows[0]['q'] : (await pool.sql`SELECT count(*) as q from CHAMADOS where status=1 and data_criacao=now()::date and id_funcionario=${this.usuario.id}`).rows[0]['q'];
+    (await loading).dismiss();
+    return response
+  }
+
+  async getGraficoPatrimonios() {
+    return (await pool.sql`SELECT * FROM PATRIMONIOS ORDER BY VALOR desc limit 5`).rows
   }
 
 }

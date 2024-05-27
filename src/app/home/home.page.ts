@@ -34,9 +34,14 @@ export class HomePage {
     if (senha !== confimaSenha) {
       this.servidor.toastGenerico('As senhas de diferem!')
     } else {
-      await this.servidor.efetueRegistroUsuario(login,senha,nome);
-      this.limpaInputs();
-      this.servidor.toastGenerico('Conta Registrada!')
+      const res = await this.servidor.efetueRegistroUsuario(login,senha,nome);
+      if (res == -1) {
+        this.servidor.toastGenerico('Usuário já cadastrado!')
+      } else if (res == 1) {
+        this.limpaInputs();
+        this.servidor.toastGenerico('Conta Registrada!')
+      }
+
     }
   }
 

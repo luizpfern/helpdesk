@@ -13,12 +13,18 @@ export class ListaChamadosPage implements OnInit {
   chamadosOrigem:any = []
   toggle: boolean = false
   busca: String = ''
+  concluidoEmpresa: any;
+  concluidoFunc: any;
 
   constructor(public servidor: ServidorService, private router: Router) { }
 
   ngOnInit() {}
 
   async ionViewWillEnter(){
+
+    this.concluidoEmpresa = await this.servidor.getQtdChamados(false);
+    this.concluidoFunc = await this.servidor.getQtdChamados(true);
+    
     this.chamadosOrigem = await this.servidor.getChamados();
     this.chamados = this.chamadosOrigem;
 
