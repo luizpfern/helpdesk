@@ -52,9 +52,24 @@ export class PrincipalPage implements OnInit {
         type: 'bar',
         data: {
           labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'],
-          datasets: [{
-            data: [233, 112, 226, 342, 165, 321],
-          }]
+          datasets: [
+              {
+                label: 'Chamados concluídos',
+                data: [233, 112, 226, 342, 165, 321],
+              }
+        ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Chamadas Concluídas durante o ano'
+            }
+          }
         }
       });
   
@@ -65,6 +80,18 @@ export class PrincipalPage implements OnInit {
           datasets: [{
             data: [205,39],
           }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Distribuição de Patrimônios'
+            }
+          }
         }
       });
 
